@@ -15,7 +15,11 @@ get('area').onwheel = function (e) {
         view.x += ((view.x + (innerWidth * devicePixelRatio) / 2) - (e.clientX * devicePixelRatio)) * zoom - ((view.x + (innerWidth * devicePixelRatio) / 2) - (e.clientX * devicePixelRatio));
         view.y += ((view.y + (innerHeight * devicePixelRatio) / 2) - (e.clientY * devicePixelRatio)) * zoom - ((view.y + (innerHeight * devicePixelRatio) / 2) - (e.clientY * devicePixelRatio));
     }
-    get('info').innerHTML = 'x: ' + view.x + '<br>y: ' + view.y + '<br>deg: ' + view.deg + '<br>zoom: ' + view.zoom;
+    get('info').innerHTML = '<tspan x="0" dy="1.2em">x: ' + view.x + '</tspan><tspan x="0" dy="1.2em">y: ' + view.y + '</tspan><tspan x="0" dy="1.2em">deg: ' + view.deg + '</tspan><tspan x="0" dy="1.2em">zoom: ' + view.zoom + '</tspan><tspan x="0" dy="1.2em">z: ' + view.z +'</tspan><tspan x="0" dy="1.2em">degX: ' + view.degX + '</tspan><tspan x="0" dy="1.2em">degY: ' + view.degY + '</tspan>';
+    clearTimeout(readings.wheelTimeout);
+    readings.wheelTimeout = setTimeout(function() {
+        get('info').innerHTML = '';
+    }, 700);
     if (readings.select.length > 0 && readings.pen == 'select') showSel();
     var wb = transform(view.wb);
     draw(wb);

@@ -17,14 +17,16 @@ function draw(wb, context, x, y) {
         var seg = wb[i].segments;
         ctx_.lineTo(seg[0][0] + addx, seg[0][1] + addy);
         for (var k = 1; k < seg.length; k++) {
-
+/* 
             if (seg[k - 1][5]) {
                 ctx_.bezierCurveTo(seg[k - 1][2] + addx, seg[k - 1][3] + addy, seg[k - 1][4] + addx, seg[k - 1][5] + addy, seg[k][0] + addx, seg[k][1] + addy);
-            } else if (seg[k - 1][3]) {
+            } else if (seg[k - 1][3] && typeof seg[k - 1][3] == 'number') {
                 ctx_.quadraticCurveTo(seg[k - 1][2] + addx, seg[k - 1][3] + addy, seg[k][0] + addx, seg[k][1] + addy);
             } else {
                 ctx_.lineTo(seg[k][0] + addx, seg[k][1] + addy);
             }
+            */
+            ctx_.lineTo(seg[k][0] + addx, seg[k][1] + addy);
             /*
             for (var t = 0; t < 1; t += 0.2) {
             ctx_.fillStyle = 'red';

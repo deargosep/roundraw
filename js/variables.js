@@ -17,7 +17,10 @@ var view = {
     x: 0,
     y: 0,
     zoom: 1,
-    deg: 0
+    deg: 0,
+    z: 0,
+    degX: 0,
+    degY: 0
 }
 if (ls.background) {
     get('myCanvas').style.backgroundColor = ls.background;

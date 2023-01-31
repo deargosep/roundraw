@@ -173,11 +173,7 @@
         #pen {
             background-image: url(img/pencil.svg);
         }
-
-        #backbutt {
-            background-image: url(img/back.svg);
-        }
-
+        
         #tools {
             background-image: url(img/tools.svg);
         }
@@ -187,16 +183,6 @@
             transition: 0.2s;
         }
 
-
-        #info {
-            padding: 0.8em;
-            font-size: 1.3em;
-            color: blue;
-            text-shadow: 0 0 2px red;
-            line-height: 1em;
-            display: block;
-            font-family: Arial;
-        }
 
         #color {
             border-radius: 100%;

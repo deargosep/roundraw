@@ -1,8 +1,14 @@
 get('area').addEventListener('touchstart', function (e) {
     get('colorPick').classList.add('colorHide');
     get('toolbox').classList.add('colorHide');
-
-    if (e.touches[1]) {
+    if (e.touches[2]) {
+        readings.touch3D = true;
+        readings.touchDraw = false;
+        readings.startX = ((e.touches[0].clientX * devicePixelRatio) + (e.touches[1].clientX * devicePixelRatio) + (e.touches[2].clientX * devicePixelRatio)) / 3;
+        readings.startY = ((e.touches[0].clientY * devicePixelRatio) + (e.touches[1].clientY * devicePixelRatio) + (e.touches[2].clientY * devicePixelRatio)) / 3;
+        readings.startDegX = view.degX;
+        readings.startDegY = view.degY;
+    } else if (e.touches[1]) {
         if (readings.touchDraw && brush[readings.pen][3] && readings.drawTimeout) {
             brush[readings.pen][3]();
             readings.touchDraw = true;

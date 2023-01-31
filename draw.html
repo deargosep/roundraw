@@ -67,7 +67,16 @@
         <input id="iw" min='0' onchange='change(this, "iw");' type='number' value='0'>
         <input id='width' max="300" min="1" type='range' value="0">
     </div>
-    <p id='info'></p>
+    <svg viewBox="0 0 250 250" style="
+    position: absolute;
+    width: 250px;
+    left: 20;
+    top:  0;
+    height: 250px;
+    pointer-events: none;
+" y="0">
+        <text id="info" y="0" text-anchor="left" font-size="15" fill="rgba(255, 255, 255, 0.4)" stroke-width="0.3" stroke="black" font-family="Courier New" font-weight="800">aaa</text>
+      </svg>
     <script src="js/variables.js"></script>
     <script src="js/funcs/draw.js"></script>
     <script src="js/funcs/smooth.js"></script>

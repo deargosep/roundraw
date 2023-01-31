@@ -1,5 +1,17 @@
 get('area').addEventListener('touchmove', function (e) {
-    if (e.touches[1] && !readings.touchDraw) {
+    if (e.touches[2] && !readings.touchDraw) {
+        var x = ((e.touches[0].clientX * devicePixelRatio) + (e.touches[1].clientX * devicePixelRatio) + (e.touches[2].clientX * devicePixelRatio)) / 3;
+        var y = ((e.touches[0].clientY * devicePixelRatio) + (e.touches[1].clientY * devicePixelRatio) + (e.touches[2].clientY * devicePixelRatio)) / 3;
+        view.degX = ((readings.startDegX/360) + (x - readings.startX) / ((innerWidth * devicePixelRatio))) * 360;
+        if (view.degX < 0) view.degX += 360;
+        if (view.degX > 360) view.degX -= 360;
+        view.degY = ((readings.startDegY/360) + (y - readings.startY) / ((innerHeight * devicePixelRatio))) * 360;
+        if (view.degY < 0) view.degY += 360;
+        if (view.degY > 360) view.degY -= 360;
+        var wb = transform(view.wb)
+        draw(wb);
+        get('info').innerHTML = '<tspan x="0" dy="1.2em">x: ' + view.x + '</tspan><tspan x="0" dy="1.2em">y: ' + view.y + '</tspan><tspan x="0" dy="1.2em">deg: ' + view.deg + '</tspan><tspan x="0" dy="1.2em">zoom: ' + view.zoom + '</tspan><tspan x="0" dy="1.2em">z: ' + view.z +'</tspan><tspan x="0" dy="1.2em">degX: ' + view.degX + '</tspan><tspan x="0" dy="1.2em">degY: ' + view.degY + '</tspan>';
+    } else if (e.touches[1] && !readings.touchDraw && !readings.touch3D) {
         var distance = Math.sqrt(Math.pow((e.touches[1].clientX * devicePixelRatio) - (e.touches[0].clientX * devicePixelRatio), 2) + Math.pow((e.touches[1].clientY * devicePixelRatio) - (e.touches[0].clientY * devicePixelRatio), 2));
         view.zoom = readings.startZoom * (distance / readings.startDistance);
         readings.moveX = ((e.touches[0].clientX * devicePixelRatio) + (e.touches[1].clientX * devicePixelRatio)) / 2;
@@ -36,7 +48,8 @@ get('area').addEventListener('touchmove', function (e) {
             }
         }
         }
-    } else if (e.touches[0] && readings.touchDraw) {
+        get('info').innerHTML = '<tspan x="0" dy="1.2em">x: ' + view.x + '</tspan><tspan x="0" dy="1.2em">y: ' + view.y + '</tspan><tspan x="0" dy="1.2em">deg: ' + view.deg + '</tspan><tspan x="0" dy="1.2em">zoom: ' + view.zoom + '</tspan><tspan x="0" dy="1.2em">z: ' + view.z +'</tspan><tspan x="0" dy="1.2em">degX: ' + view.degX + '</tspan><tspan x="0" dy="1.2em">degY: ' + view.degY + '</tspan>';   
+     } else if (e.touches[0] && readings.touchDraw) {
         if (brush[readings.pen][3] && readings.add) {
             brush[readings.pen][3]();
             readings.add = false;
