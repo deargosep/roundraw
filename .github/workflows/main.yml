@@ -14,4 +14,4 @@ jobs:
         server: noopdie.com
         username: user
         password: ${{ secrets.ftp_password }}
-        server-dir:./roundraw/files/roundraw/
+        server-dir: ./roundraw/files/roundraw/
